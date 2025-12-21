@@ -9,7 +9,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class User extends Authenticatable implements MustVerifyEmail
-{
+    /**
+     * Sobrescreve o envio do e-mail de verificação para usar o nome correto da rota.
+     */
+    {
+    // public function sendEmailVerificationNotification()
+    // {
+    //     $this->notify(new \Illuminate\Auth\Notifications\VerifyEmail);
+    // }
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
@@ -22,7 +29,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'password_confirmation',
+        // 'email_verified_at',
     ];
 
     /**

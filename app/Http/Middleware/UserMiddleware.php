@@ -16,10 +16,10 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth()->guard('user')->check()){
+        if(Auth::guard('user')->check()){
         return $next($request);
     }
 
-    return redirect()->route('user.login');
+    return redirect()->route('user.login' )->with('error', 'You must be logged in to access this page.');
 }
 }
